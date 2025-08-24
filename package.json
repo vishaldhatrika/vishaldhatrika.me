@@ -1,7 +1,7 @@
 {
-  "name": "@onwidget/astrowind",
-  "version": "1.0.0-beta.52",
-  "description": "AstroWind: A free template using Astro 5.0 and Tailwind CSS. Astro starter theme.",
+  "name": "@vishaldhatrika/vishaldhatrika.me",
+  "version": "1.0.0",
+  "description": "Vishal Dhatrika's Portfolio built with Astro and Tailwind CSS.",
   "type": "module",
   "private": true,
   "engines": {
@@ -24,6 +24,7 @@
   "dependencies": {
     "@astrojs/rss": "^4.0.12",
     "@astrojs/sitemap": "^3.5.1",
+    "@astrojs/ts-plugin": "^1.10.4",
     "@astrolib/analytics": "^0.6.1",
     "@astrolib/seo": "^1.0.0-beta.8",
     "@fontsource-variable/inter": "^5.2.6",
