@@ -5,5 +5,11 @@ import { SITE } from 'astrowind:config';
 <span
   class="self-center ml-2 rtl:ml-0 rtl:mr-2 text-2xl md:text-xl font-bold text-gray-900 whitespace-nowrap dark:text-white"
 >
-  🚀 {SITE?.name}
-</span>
+  <!-- Light mode logo -->
+  <img src="/logo-vd-light.svg" alt="Site Logo-LightMode" class="h-12 w-12 mr-2 px-1 border-0 block dark:hidden" />
+
+  <!-- Dark mode logo -->
+  <img src="/logo-vd-dark.svg" alt="Site Logo-DarkMode" class="h-12 w-12 mr-2 px-1 border-0 hidden dark:block" /></span
+>
+
+{SITE?.name}

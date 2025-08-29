@@ -3,13 +3,13 @@
     viewBox="0 -33.12 1918.61 1137.46" preserveAspectRatio="xMidYMid meet">
     <defs>
         <!-- Light mode gradients -->
-        <linearGradient id="g1-light" x1="1044" y1="535.61" x2="1918.61" y2="535.61" gradientUnits="userSpaceOnUse">
+        <!-- <linearGradient id="g1-light" x1="1044" y1="535.61" x2="1918.61" y2="535.61" gradientUnits="userSpaceOnUse">
             <stop offset="0" stop-color="#040c6b" />
             <stop offset="1" stop-color="#6fc4ec" />
         </linearGradient>
         <linearGradient id="g2-light" x1="0" y1="543.57" x2="914.34" y2="543.57" xlink:href="#g1-light" />
         <linearGradient id="g3-light" x1="221.14" y1="279.59" x2="704.99" y2="279.59" xlink:href="#g1-light" />
-        <linearGradient id="g4-light" x1="1244" y1="534.72" x2="1711" y2="534.72" xlink:href="#g1-light" />
+        <linearGradient id="g4-light" x1="1244" y1="534.72" x2="1711" y2="534.72" xlink:href="#g1-light" /> -->
 
         <!-- Dark mode gradients -->
         <linearGradient id="g1-dark" x1="1044" y1="535.61" x2="1918.61" y2="535.61" gradientUnits="userSpaceOnUse">
@@ -49,7 +49,7 @@
             }
 
             /* Switch to light gradients */
-            @media (prefers-color-scheme: light) {
+            /* @media (prefers-color-scheme: light) {
                 .s1 {
                     stroke: url(#g1-light);
                 }
@@ -65,25 +65,7 @@
                 .s4 {
                     stroke: url(#g4-light);
                 }
-            }
-
-            @media (prefers-color-scheme: dark) {
-                .s1 {
-                    stroke: url(#g1-dark);
-                }
-
-                .s2 {
-                    stroke: url(#g2-dark);
-                }
-
-                .s3 {
-                    stroke: url(#g3-dark);
-                }
-
-                .s4 {
-                    stroke: url(#g4-dark);
-                }
-            }
+            } */
         </style>
     </defs>
 
@@ -94,4 +76,4 @@
     <polyline class="s2" points="866.84 63.41 469.84 1023.41 444.5 1023.72 47.5 63.72" />
     <polyline class="s3" points="657.49 51.71 469.08 507.32 457.05 507.47 268.64 51.86" />
 </svg>
-<!-- auto switch dark/light VD logo by Vishal Dhatrika -->
+<!-- Dark mode VD logo by Vishal Dhatrika -->

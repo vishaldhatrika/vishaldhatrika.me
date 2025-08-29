@@ -3,24 +3,13 @@ import { getPermalink, getBlogPermalink, getAsset } from './utils/permalinks';
 export const headerData = {
   links: [
     {
-      text: 'Homes',
+      text: 'Projects',
       links: [
         {
           text: 'SaaS',
-          href: getPermalink('/homes/saas'),
+          href: getPermalink('/projects/blockcertify'),
         },
-        {
-          text: 'Startup',
-          href: getPermalink('/homes/startup'),
-        },
-        {
-          text: 'Mobile App',
-          href: getPermalink('/homes/mobile-app'),
-        },
-        {
-          text: 'Personal',
-          href: getPermalink('/homes/personal'),
-        },
+        
       ],
     },
     {
@@ -115,7 +104,7 @@ export const headerData = {
       href: '#',
     },
   ],
-  actions: [{ text: 'Download', href: 'https://github.com/arthelokyo/astrowind', target: '_blank' }],
+  actions: [{ text: 'Clone Portfolio', href: 'https://github.com/vishaldhatrika/vishaldhatrika.me', target: '_blank' }],
 };
 
 export const footerData = {
