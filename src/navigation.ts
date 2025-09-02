@@ -2,16 +2,7 @@ import { getPermalink, getBlogPermalink, getAsset } from './utils/permalinks';
 
 export const headerData = {
   links: [
-    {
-      text: 'Projects',
-      links: [
-        {
-          text: 'All Projects',
-          href: getPermalink('/#projects'),
-        },
-        
-      ],
-    },
+    
     {
       text: 'Pages',
       links: [
@@ -31,6 +22,16 @@ export const headerData = {
           text: 'Privacy policy',
           href: getPermalink('/privacy'),
         },
+      ],
+    },
+    {
+      text: 'Projects',
+      links: [
+        {
+          text: 'All Projects',
+          href: getPermalink('/#projects'),
+        },
+        
       ],
     },
     {

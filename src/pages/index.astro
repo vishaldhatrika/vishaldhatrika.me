@@ -62,17 +62,16 @@ const metadata = {
   <Fragment slot="header">
     <Header
       links={[
-        { text: 'Home', href: '#' },
-        { text: 'About', href: '#about' },
-        { text: 'Resume', href: '#resume' },
-        { text: 'Projects', href: '#projects' },
-        { text: 'Blog', href: '#blog' },
+        { text: 'Home', href: '/#' },
+        { text: 'Projects', href: '/#projects' },
+        { text: 'Testimonials', href: '/#testimonials' },
+        { text: 'Blog', href: '/blog' },
         { text: 'Github', href: 'https://github.com/vishaldhatrika' },
       ]}
       actions={[
         {
           text: 'Hire me',
-          href: '#',
+          href: '/about#contact',
         },
       ]}
       isSticky
@@ -414,6 +413,7 @@ const metadata = {
   <!-- Testimonials Widget *********** -->
 
   <Testimonials
+    id="testimonials"
     title="Testimonials"
     subtitle="Feedback from peers, mentors, and students."
     testimonials={[
