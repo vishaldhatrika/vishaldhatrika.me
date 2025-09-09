@@ -14,9 +14,9 @@ const {
 } = Astro.props;
 
 const variants = {
-  primary: 'btn-primary',
-  secondary: 'btn-secondary',
-  tertiary: 'btn btn-tertiary',
+  primary: 'btn-primary relative group overflow-hidden',
+  secondary: 'btn-secondary relative group overflow-hidden',
+  tertiary: 'btn btn-tertiary relative group overflow-hidden',
   link: 'cursor-pointer hover:text-primary',
 };
 ---
@@ -24,8 +24,14 @@ const variants = {
 {
   type === 'button' || type === 'submit' || type === 'reset' ? (
     <button type={type} class={twMerge(variants[variant] || '', className)} {...rest}>
-      <Fragment set:html={text} />
-      {icon && <Icon name={icon} class="w-5 h-5 ml-1 -mr-1.5 rtl:mr-1 rtl:-ml-1.5 inline-block" />}
+      {/* Glow layer */}
+      <span class="absolute inset-0 [background:radial-gradient(circle_at_var(--x)_var(--y),#00d1ffaa,transparent_90%)] opacity-0 group-hover:opacity-100 transition duration-200" />
+
+      {/* Content */}
+      <span class="relative z-10 group-hover:background-opacity-50">
+        <Fragment set:html={text} />
+        {icon && <Icon name={icon} class="w-5 h-5 ml-1 -mr-1.5 rtl:mr-1 rtl:-ml-1.5 inline-block" />}
+      </span>
     </button>
   ) : (
     <a
@@ -33,8 +39,12 @@ const variants = {
       {...(target ? { target: target, rel: 'noopener noreferrer' } : {})}
       {...rest}
     >
-      <Fragment set:html={text} />
-      {icon && <Icon name={icon} class="w-5 h-5 ml-1 -mr-1.5 rtl:mr-1 rtl:-ml-1.5 inline-block" />}
+      <span class="absolute inset-0 [background:radial-gradient(circle_at_var(--x)_var(--y),#00d1ffaa,transparent_90%)] opacity-0 group-hover:opacity-100 transition duration-200" />
+
+      <span class="relative z-10 group-hover:background-opacity-50">
+        <Fragment set:html={text} />
+        {icon && <Icon name={icon} class="w-5 h-5 ml-1 -mr-1.5 rtl:mr-1 rtl:-ml-1.5 inline-block" />}
+      </span>
     </a>
   )
 }

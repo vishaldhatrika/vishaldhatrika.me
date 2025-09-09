@@ -42,6 +42,27 @@ const { language, textDirection } = I18N;
     <!-- Comment the line below to disable View Transitions -->
     <ClientRouter fallback="swap" />
     <LoadingIndicator color="#8d62ff" threshold={false} />
+    <script>
+      document.querySelectorAll('button, a').forEach((el) => {
+        el.addEventListener('mousemove', (e) => {
+          const rect = el.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          el.style.setProperty('--x', `${x}px`);
+          el.style.setProperty('--y', `${y}px`);
+        });
+      });
+
+      document.querySelectorAll('.myGlowingDiv').forEach((div) => {
+        div.addEventListener('mousemove', (e) => {
+          const rect = div.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          div.style.setProperty('--x', x + 'px');
+          div.style.setProperty('--y', y + 'px');
+        });
+      });
+    </script>
   </head>
 
   <body class="antialiased text-default bg-page tracking-tight">
