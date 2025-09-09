@@ -162,6 +162,25 @@ import { UI } from 'astrowind:config';
     onLoad();
     onPageShow();
   });
+
+  let tickingHover = false;
+
+  document.addEventListener('mousemove', (e) => {
+    const target = e.target.closest('button, a, .myGlowingDiv');
+    if (!target) return;
+
+    if (!tickingHover) {
+      window.requestAnimationFrame(() => {
+        const rect = target.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        target.style.setProperty('--x', `${x}px`);
+        target.style.setProperty('--y', `${y}px`);
+        tickingHover = false;
+      });
+      tickingHover = true;
+    }
+  });
 </script>
 
 <script is:inline>

@@ -12,4 +12,23 @@
       ]
     }
   ]
+,
+  "redirects": [
+    {
+      "source": "/",
+      "has": [
+        { "type": "host", "value": "blog.vishaldhatrika.me" }
+      ],
+      "destination": "https://vishaldhatrika.me/blog",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        { "type": "host", "value": "cuisinehaveli.vishaldhatrika.me" }
+      ],
+      "destination": "https://vishaldhatrika.me/projects/cuisinehaveli",
+      "permanent": true
+    }
+  ]
 }

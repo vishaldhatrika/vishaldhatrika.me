@@ -1,0 +1,165 @@
+---
+import { Icon } from 'astro-icon/components';
+
+const techs = [
+  { name: 'react', icon: 'simple-icons:react', color: 'text-sky-400' },
+  { name: 'javascript', icon: 'simple-icons:javascript', color: 'text-yellow-400' },
+  { name: 'typescript', icon: 'simple-icons:typescript', color: 'text-blue-500' },
+  { name: 'java', icon: 'simple-icons:openjdk', color: 'text-red-500' },
+  { name: 'csharp', icon: 'simple-icons:csharp', color: 'text-green-600' },
+  { name: 'cplusplus', icon: 'simple-icons:cplusplus', color: 'text-blue-600' },
+  { name: 'python', icon: 'simple-icons:python', color: 'text-yellow-500' },
+  { name: 'nodedotjs', icon: 'simple-icons:nodedotjs', color: 'text-green-500' },
+  { name: 'docker', icon: 'simple-icons:docker', color: 'text-sky-600' },
+  { name: 'aws', icon: 'simple-icons:amazonaws', color: 'text-orange-500' },
+  { name: 'git', icon: 'simple-icons:git', color: 'text-red-600' },
+  { name: 'github', icon: 'simple-icons:github', color: 'text-gray-800' },
+  { name: 'visualstudio', icon: 'simple-icons:visualstudio', color: 'text-purple-600' },
+  { name: 'bootstrap', icon: 'simple-icons:bootstrap', color: 'text-purple-500' },
+  { name: 'tailwindcss', icon: 'simple-icons:tailwindcss', color: 'text-sky-400' },
+  { name: 'azuredevops', icon: 'simple-icons:azuredevops', color: 'text-blue-500' },
+  { name: 'php', icon: 'simple-icons:php', color: 'text-indigo-500' },
+  { name: 'mysql', icon: 'simple-icons:mysql', color: 'text-orange-400' },
+  { name: 'mongodb', icon: 'simple-icons:mongodb', color: 'text-green-700' },
+  { name: 'html5', icon: 'simple-icons:html5', color: 'text-orange-600' },
+  { name: 'css3', icon: 'simple-icons:css3', color: 'text-blue-600' },
+  { name: 'nextjs', icon: 'simple-icons:nextdotjs', color: 'text-black' },
+  { name: 'astro', icon: 'simple-icons:astro', color: 'text-orange-500' },
+  { name: 'figma', icon: 'simple-icons:figma', color: 'text-pink-500' },
+  { name: 'canva', icon: 'simple-icons:canva', color: 'text-blue-400' },
+  { name: 'wordpress', icon: 'simple-icons:wordpress', color: 'text-blue-800' },
+  { name: 'woocommerce', icon: 'simple-icons:woocommerce', color: 'text-purple-600' },
+  { name: 'elementor', icon: 'simple-icons:elementor', color: 'text-purple-500' },
+  { name: 'mailchimp', icon: 'simple-icons:mailchimp', color: 'text-yellow-500' },
+  { name: 'hubspot', icon: 'simple-icons:hubspot', color: 'text-orange-400' },
+  { name: 'zapier', icon: 'simple-icons:zapier', color: 'text-yellow-600' },
+  { name: 'slack', icon: 'simple-icons:slack', color: 'text-purple-500' },
+  { name: 'notion', icon: 'simple-icons:notion', color: 'text-black' },
+  { name: 'jira', icon: 'simple-icons:jira', color: 'text-blue-600' },
+  { name: 'opencv', icon: 'simple-icons:opencv', color: 'text-blue-700' },
+];
+---
+
+<div class="mainHex">
+  <div class="containerHex">
+    {
+      techs.map((tech, index) => (
+        <div class="hexItem" data-index={index}>
+          <Icon name={tech.icon} size={60} class={tech.color} title={tech.name} />
+        </div>
+      ))
+    }
+  </div>
+</div>
+
+<style>
+  .containerHex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .hexItem {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: radial-gradient(circle at center, #ffffff, #d1d5db);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
+    transition:
+      transform 0.4s ease,
+      filter 0.4s ease,
+      z-index 0.2s ease;
+    position: relative;
+  }
+
+  /* hovered states */
+  .hexItem.active {
+    transform: scale(1.5) translateY(-5px);
+    filter: brightness(1.2);
+    z-index: 10;
+  }
+
+  .hexItem.neighbor {
+    transform: scale(1.15) translateY(-2px);
+    filter: brightness(1.05);
+  }
+
+  .hexItem.far {
+    transform: scale(0.9);
+    filter: brightness(0.7);
+  }
+</style>
+
+<script>
+  const all = document.querySelectorAll('.hexItem');
+  const container = document.querySelector('.containerHex');
+
+  function computeRows() {
+    let row = 0;
+    let lastTop = -1;
+    all.forEach((el) => {
+      const top = el.offsetTop;
+      if (lastTop !== -1 && top > lastTop + 5) row++; // new row
+      el.dataset.row = row;
+      lastTop = top;
+
+      // stagger every other row
+      el.style.marginLeft = row % 2 === 0 ? '0px' : '50px';
+    });
+  }
+
+  function getNeighbors(item) {
+    const neighbors = [];
+    const row = +item.dataset.row;
+    const index = +item.dataset.index;
+
+    const itemRect = item.getBoundingClientRect();
+    const itemCenter = {
+      x: itemRect.left + itemRect.width / 2,
+      y: itemRect.top + itemRect.height / 2,
+    };
+
+    all.forEach((el) => {
+      if (el === item) return;
+      const elRect = el.getBoundingClientRect();
+      const elCenter = {
+        x: elRect.left + elRect.width / 2,
+        y: elRect.top + elRect.height / 2,
+      };
+      const dx = elCenter.x - itemCenter.x;
+      const dy = elCenter.y - itemCenter.y;
+      const distance = Math.sqrt(dx * dx + dy * dy);
+
+      if (distance < 120) neighbors.push(el); // threshold for neighbor
+    });
+
+    return neighbors;
+  }
+
+  function resetClasses() {
+    all.forEach((el) => el.classList.remove('active', 'neighbor', 'far'));
+  }
+
+  function handleHover(item) {
+    resetClasses();
+    item.classList.add('active');
+    const neighbors = getNeighbors(item);
+    neighbors.forEach((n) => n.classList.add('neighbor'));
+    all.forEach((el) => {
+      if (!el.classList.contains('active') && !el.classList.contains('neighbor')) {
+        el.classList.add('far');
+      }
+    });
+  }
+
+  all.forEach((item) => {
+    item.addEventListener('mouseenter', () => handleHover(item));
+    item.addEventListener('mouseleave', resetClasses);
+  });
+
+  window.addEventListener('resize', computeRows);
+  computeRows();
+</script>
