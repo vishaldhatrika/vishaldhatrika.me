@@ -7,6 +7,10 @@ export const headerData = {
       text: 'Pages',
       links: [
         {
+          text: 'Home',
+          href: getPermalink('/'),
+        },
+        {
           text: 'About me',
           href: getPermalink('/about'),
         },
@@ -19,41 +23,18 @@ export const headerData = {
           href: getPermalink('/terms'),
         },
         {
-          text: 'Privacy policy',
+          text: 'Privacy Policy',
           href: getPermalink('/privacy'),
         },
       ],
     },
     {
       text: 'Projects',
-      links: [
-        {
-          text: 'All Projects',
-          href: getPermalink('/#projects'),
-        },
-        
-      ],
+      href: getPermalink('/#projects'),
     },
     {
       text: 'Blog',
-      links: [
-        {
-          text: 'Blog List',
-          href: getBlogPermalink(),
-        },
-        {
-          text: 'Categories',
-          href: getPermalink('tutorials', 'category'),
-        },
-        {
-          text: 'Tags',
-          href: getPermalink('astro', 'tag'),
-        },
-      ],
-    },
-    {
-      text: 'Widgets',
-      href: '#',
+      href: getBlogPermalink(),
     },
   ],
   actions: [{ text: 'Clone Portfolio', href: 'https://github.com/vishaldhatrika/vishaldhatrika.me', target: '_blank' }],
