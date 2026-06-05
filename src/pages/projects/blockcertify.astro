@@ -1,6 +1,6 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
-// import Header from '~/components/widgets/Header.astro';
+import Header from '~/components/widgets/Header.astro';
 import Hero from '~/components/widgets/Hero.astro';
 import Content from '~/components/widgets/Content.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
@@ -8,85 +8,96 @@ import Features3 from '~/components/widgets/Features3.astro';
 import Testimonials from '~/components/widgets/Testimonials.astro';
 import Steps from '~/components/widgets/Steps.astro';
 import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
-import { getPermalink } from '~/utils/permalinks';
 
 const metadata = {
-  title: 'Personal Homepage Demo',
+  title: 'BlockCertify by Vishal Dhatrika',
 };
 ---
 
 <Layout metadata={metadata}>
-  <!-- <Fragment slot="announcement"></Fragment>
+  <Fragment slot="announcement"></Fragment>
   <Fragment slot="header">
     <Header
       links={[
-        { text: 'Home', href: '#' },
-        { text: 'About', href: '#about' },
-        { text: 'Resume', href: '#resume' },
-        { text: 'Projects', href: '#projects' },
-        { text: 'Blog', href: '#blog' },
+        { text: 'Home', href: '/' },
+        { text: 'Projects', href: '/#projects' },
+        { text: 'Testimonials', href: '/#testimonials' },
+        { text: 'Blog', href: '/blog' },
         { text: 'GitHub', href: 'https://github.com/vishaldhatrika' },
       ]}
       actions={[
         {
           text: 'Hire me',
-          href: '#',
+          href: '/about#contact',
         },
       ]}
       isSticky
       showToggleTheme
     />
-  </Fragment> -->
+  </Fragment>
 
-  <!-- Hero2 Widget ******************* -->
+  <!-- Hero Widget ******************* -->
 
   <Hero
     id="hero"
-    title="Sarah Johnson"
-    tagline="Personal Web Demo"
-    actions={[{ variant: 'primary', text: 'Hire me', href: getPermalink('/about#form') }]}
+    title="BlockCertify"
+    tagline="Blockchain Certificate Verification"
+    actions={[
+      {
+        variant: 'primary',
+        text: 'GitHub Repository',
+        href: 'https://github.com/vishaldhatrika',
+        icon: 'tabler:brand-github',
+      },
+      { text: 'Live Demo', href: '#', icon: 'tabler:external-link' },
+    ]}
+    image={{ src: '~/assets/images/p2-2-bc-logo.png', alt: 'BlockCertify Hero Image' }}
   >
     <Fragment slot="subtitle">
-      I'm a Graphic Designer passionate about crafting visual stories. <br /> With 5 years of experience and a degree from
-      New York University's School of Design. I infuse vitality into brands and designs, transforming concepts into captivating
-      realities.
+      A decentralized, immutable solution for verifying academic and professional credentials. Built on Ethereum, <span
+        class="font-semibold text-accent">BlockCertify</span
+      > ensures that certificates are tamper-proof and instantly verifiable globally.
     </Fragment>
   </Hero>
 
-  <!-- Content Widget **************** -->
+  <!-- Content Widget (Problem & Solution) **************** -->
 
   <Content
-    id="about"
+    id="overview"
     columns={3}
     items={[
-      {
-        icon: 'tabler:brand-pinterest',
-        callToAction: {
-          target: '_blank',
-          text: 'Pinterest',
-          href: '#',
-        },
-      },
+      // {
+      //   icon: 'tabler:shield-lock',
+      //   callToAction: {
+      //     target: '_blank',
+      //     text: 'Security Protocol',
+      //     href: '#',
+      //   },
+      // },
     ]}
     image={{
-      src: 'https://images.unsplash.com/photo-1491349174775-aaafddd81942?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
-      alt: 'Colorful Image',
+      src: '~/assets/images/p2-blockcertify.png',
+      alt: 'BlockCertify Overview Image',
       loading: 'eager',
     }}
   >
     <Fragment slot="content">
-      <h2 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">About me</h2>
+      <h2 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Technical Overview</h2>
       <p>
-        Welcome to my creative journey. My work is a testament to my commitment to bringing ideas to life, where each
-        pixel becomes a brushstroke in the canvas of imagination.
+        The current centralized certificate verification systems are prone to fraud, administrative delays, and lack of
+        transparency. <span class="font-semibold">BlockCertify</span> addresses these issues by leveraging blockchain's decentralization.
       </p>
       <br />
       <p>
-        I find inspiration in the world around me, whether through the pages of a captivating novel, the intricate
-        details of typography, or the vibrant hues of nature during my outdoor escapades.
+        Each certificate issued is hashed and stored on the Ethereum blockchain as a unique transaction. This ensures
+        that any attempt to alter the certificate will immediately invalidate the verification check.
       </p>
       <br />
-      <p>If you're curious to dive deeper into my work, you can follow me:</p>
+      <p>
+        Key technical focus: <span class="font-italic"
+          >Data Integrity, Decentralized Identity, and Cryptographic Security.</span
+        >
+      </p>
     </Fragment>
 
     <Fragment slot="bg">
@@ -94,127 +105,97 @@ const metadata = {
     </Fragment>
   </Content>
 
-  <!-- Steps Widget ****************** -->
+  <!-- Steps Widget (Technical Architecture) ****************** -->
 
   <Steps
-    id="resume"
-    title="Work experience"
+    id="architecture"
+    title="Technical Architecture"
     items={[
       {
-        title:
-          'Graphic Designer <br /> <span class="font-normal">ABC Design Studio, New York, NY</span> <br /> <span class="text-sm font-normal">2021 - Present</span>',
-        description: `Collaborate with clients to understand design requirements and objectives. <br /> Develop branding solutions, including logos, color palettes, and brand guidelines. <br /> Design marketing materials such as brochures, posters, and digital assets. <br /> Create visually appealing user interfaces for websites and applications.`,
-        icon: 'tabler:briefcase',
+        title: 'Step 1: Certificate Issuance',
+        description: `The educational institution uploads the certificate details. The data is hashed using SHA-256 for privacy and integrity.`,
+        icon: 'tabler:file-plus',
       },
       {
-        title:
-          'Junior Graphic Designer <br /> <span class="font-normal">XYZ Creative Agency, Los Angeles, CA</span> <br /> <span class="text-sm font-normal">2018 - 2021</span>',
-        description: `Assisted senior designers in creating design concepts and visual assets. <br /> Contributed to the development of brand identities and marketing collateral. <br /> Collaborated with the marketing team to ensure consistent design across campaigns. <br /> Gained hands-on experience in various design software and tools.`,
-        icon: 'tabler:briefcase',
+        title: 'Step 2: Smart Contract Interaction',
+        description: `The institution's authorized Ethereum wallet signs a transaction to the Smart Contract, storing the digital signature and hash of the certificate.`,
+        icon: 'tabler:link',
+      },
+      {
+        title: 'Step 3: Blockchain Confirmation',
+        description: `The transaction is mined on the Ethereum mainnet/testnet, providing an immutable timestamp and proof of issuance.`,
+        icon: 'tabler:check',
+      },
+      {
+        title: 'Step 4: Verification Process',
+        description: `Students or employers upload the certificate file. The system re-hashes it and compares it with the hash stored on the blockchain via Web3.js.`,
+        icon: 'tabler:search',
       },
     ]}
     classes={{ container: 'max-w-3xl' }}
   />
 
-  <!-- Steps Widget ****************** -->
-
-  <Steps
-    id="resume"
-    title="Education"
-    items={[
-      {
-        title: `Master of Fine Arts in Graphic Design <br /> <span class="font-normal">New York University's School of Design</span> <br /> <span class="text-sm font-normal">2018 - 2020</span>`,
-        icon: 'tabler:school',
-      },
-      {
-        title: `Bachelor of Arts in Graphic Design <br /> <span class="font-normal">New York University's School of Design</span> <br /> <span class="text-sm font-normal">2014 - 2018</span>`,
-        icon: 'tabler:school',
-      },
-    ]}
-    classes={{ container: 'max-w-3xl' }}
-  />
-
-  <!-- Features3 Widget ************** -->
+  <!-- Features3 Widget (Tech Stack) ************** -->
 
   <Features3
-    title="Skills"
-    subtitle="Discover the proficiencies that allow me to bring imagination to life through design."
+    title="Core Tech Stack"
+    subtitle="The technologies and tools that power the decentralized verification."
     columns={3}
     defaultIcon="tabler:point-filled"
     items={[
       {
-        title: 'Graphic design',
-        description: 'Proficient in crafting visually appealing designs that convey messages effectively.',
+        title: 'Solidity',
+        description: 'Used for writing the smart contracts that handle certificate logic and verification rules.',
       },
       {
-        title: 'Branding and identity',
-        description: 'Skilled at developing cohesive brand identities, including logos and brand guidelines.',
+        title: 'Ethereum',
+        description: 'The underlying blockchain network provides a decentralized, tamper-proof registry.',
       },
       {
-        title: 'User-centered design',
-        description: 'Experienced in creating user-friendly interfaces and optimizing user experiences.',
+        title: 'Web3.js',
+        description: 'The interface for the frontend to communicate with the Ethereum blockchain via JSON-RPC.',
       },
       {
-        title: 'Adobe Creative Suite',
-        description: 'Skilled in using Photoshop, Illustrator, and InDesign to create and edit visual elements.',
+        title: 'React.js',
+        description: 'Used for building a responsive and interactive user interface.',
       },
       {
-        title: 'Typography',
-        description: 'Adept in selecting and manipulating typefaces to enhance design aesthetics.',
+        title: 'MetaMask',
+        description: 'Integrated as the primary wallet for institutional signing and user interaction.',
       },
       {
-        title: 'Color theory',
-        description: 'Proficient in using color to evoke emotions and enhance visual harmony.',
-      },
-      {
-        title: 'Print and digital design',
-        description: 'Knowledgeable in designing for both print materials and digital platforms.',
-      },
-      {
-        title: 'Attention to detail',
-        description: 'Diligent in maintaining precision and quality in all design work.',
-      },
-      {
-        title: 'Adaptability',
-        description: 'Quick to adapt to new design trends, technologies, and client preferences.',
+        title: 'IPFS',
+        description: 'Utilized for decentralized storage of larger certificate data (if applicable).',
       },
     ]}
   />
 
-  <!-- Content Widget **************** -->
+  <!-- Content Widget (Key Implementation Details) **************** -->
 
   <Content
-    id="portfolio"
-    title="Elevating visual narratives"
-    subtitle="Embark on a design journey that surpasses pixels, entering a realm of imagination. Explore my portfolio, where passion and creativity converge to shape enthralling visual narratives."
+    id="implementation"
+    title="Key Implementation Details"
+    subtitle="A deeper look into the codebase and technical decisions."
     isReversed
     items={[
       {
-        title: 'Description:',
+        title: 'Smart Contract Design:',
         description:
-          'Developed a comprehensive brand identity for a tech startup, Tech Innovators, specializing in disruptive innovations. The goal was to convey a modern yet approachable image that resonated with both corporate clients and tech enthusiasts.',
+          'Gas-optimized Solidity contract using the Factory Pattern to manage multiple institutions and their respective certificate registries.',
       },
       {
-        title: 'Role:',
+        title: 'Web3 Integration:',
         description:
-          'Led the entire branding process from concept to execution. Created a dynamic logo that symbolized innovation, selected a vibrant color palette, and I designed corporate stationery, website graphics, and social media assets.',
+          'Implemented custom hooks for wallet connection, contract instance management, and real-time transaction tracking.',
       },
     ]}
     image={{
-      src: 'https://images.unsplash.com/photo-1658248165252-71e116af1b34?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=928&q=80',
-      alt: 'Tech Design Image',
-    }}
-    callToAction={{
-      target: '_blank',
-      text: 'Go to the project',
-      icon: 'tabler:chevron-right',
-      href: '#',
+      src: '~/assets/images/p2-3-bc-flowchart.png',
+      alt: 'Code Snippet / Implementation Image',
     }}
   >
     <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
-        Project 1: <br /><span class="text-2xl">Brand identity for tech innovators</span>
-      </h3>
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Technical Deep Dive</h3>
     </Fragment>
 
     <Fragment slot="bg">
@@ -222,37 +203,31 @@ const metadata = {
     </Fragment>
   </Content>
 
-  <!-- Content Widget **************** -->
+  <!-- Content Widget (Challenges & Solutions) **************** -->
 
   <Content
+    id="challenges"
+    title="Challenges & Technical Solutions"
     isReversed
-    isAfterContent={true}
     items={[
       {
-        title: 'Description:',
+        title: 'Gas Optimization:',
         description:
-          'Designed a captivating event poster for an art and music festival, "ArtWave Fusion," aiming to showcase the synergy between visual art and music genres.',
+          'Challenge: High transaction costs on Ethereum. Solution: Optimized smart contract logic by reducing state changes and using event-based data retrieval instead of storage where possible.',
       },
       {
-        title: 'Role:',
-        description: `Translated the festival's creative theme into a visually striking poster. Used bold typography, vibrant colors, and abstract elements to depict the fusion of art and music. Ensured the design captured the festival's vibrant atmosphere.`,
+        title: 'Identity Verification:',
+        description:
+          'Challenge: Ensuring only authorized institutions can issue certificates. Solution: Implemented a Role-Based Access Control (RBAC) system using OpenZeppelin’s AccessControl contracts.',
       },
     ]}
     image={{
-      src: 'https://images.unsplash.com/photo-1619983081563-430f63602796?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
-      alt: 'Art and Music Poster Image',
-    }}
-    callToAction={{
-      target: '_blank',
-      text: 'Go to the project',
-      icon: 'tabler:chevron-right',
-      href: '#',
+      src: 'https://images.unsplash.com/photo-1639322537228-f710d846310a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1632&q=80',
+      alt: 'Blockchain Network Visualization',
     }}
   >
     <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
-        Project 2: <br /><span class="text-2xl">Event poster for art & music festival</span>
-      </h3>
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Overcoming Technical Hurdles</h3>
     </Fragment>
 
     <Fragment slot="bg">
@@ -260,36 +235,37 @@ const metadata = {
     </Fragment>
   </Content>
 
-  <!-- Content Widget **************** -->
+  <!-- Content Widget (Research & Publication) **************** -->
 
   <Content
-    isReversed
-    isAfterContent={true}
+    id="research"
+    title="Research & Academic Impact"
+    subtitle="Contributing to the broader field of Decentralized Identity and Blockchain Security."
     items={[
       {
-        title: 'Description:',
-        description: `Redesigned the e-commerce website for an eco-conscious fashion brand, GreenVogue. The objective was to align the brand's online presence with its sustainable ethos and improve user experience.`,
+        title: 'Research Paper:',
+        description:
+          'Authored a technical whitepaper detailing the comparison between traditional hash-based verification and decentralized zk-SNARKs for privacy-preserving credentialing.',
       },
       {
-        title: 'Role:',
-        description: `Conducted a thorough analysis of the brand's values and customer base to inform the design direction. Created a visually appealing interface with intuitive navigation, highlighting sustainable materials, and integrating a user-friendly shopping experience.`,
+        title: 'PhD Application Highlight:',
+        description:
+          'This project serves as a practical implementation for my research interests in Secure Distributed Systems and Blockchain Security protocols.',
       },
     ]}
     image={{
-      src: 'https://images.unsplash.com/photo-1772551761752-bc870c2e5be5?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      alt: 'Fashion e-commerce Image',
+      src: '~/assets/images/p2-1-blockcertify-research.png',
+      alt: 'Academic Research Image',
     }}
     callToAction={{
       target: '_blank',
-      text: 'Go to the project',
-      icon: 'tabler:chevron-right',
+      text: 'View Whitepaper',
+      icon: 'tabler:file-text',
       href: '#',
     }}
   >
     <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
-        Project 3: <br /><span class="text-2xl">E-commerce website redesign for fashion brand</span>
-      </h3>
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Academic Foundation</h3>
     </Fragment>
 
     <Fragment slot="bg">
@@ -300,61 +276,25 @@ const metadata = {
   <!-- Testimonials Widget *********** -->
 
   <Testimonials
-    title="Client testimonials"
-    subtitle="Discover what clients have to say about their experiences working with me."
+    title="Accclodes & Feedback"
+    subtitle="Validation from examiners and project collaborators."
     testimonials={[
       {
-        testimonial: `She took our vague concept and turned it into a visual masterpiece that perfectly aligned with our goals. Her attention to detail and ability to translate ideas into compelling visuals exceeded our expectations.`,
-        name: 'Mark Thompson',
-        job: 'Creative director',
+        testimonial: `Patent Application has been filed and we invite the parties involved to invoke a request for examination. We are impressed by the innovative approach and technical depth of the project.`,
+        name: ' Patent Officers ',
+        job: 'Ministry of Commerce and Industry, Government of India',
         image: {
-          src: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
-          alt: 'Mark Thompson Image',
+          src: 'https://images.unsplash.com/photo-1511367461989-f85a21fda167?q=80&w=3431&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+          alt: 'Person Image',
         },
       },
       {
-        testimonial: `She transformed our brand identity with her creative finesse, capturing our essence in every element. Her dedication and talent truly shine through her work.`,
-        name: 'Emily Martinez',
-        job: 'CEO',
+        testimonial: `BlockCertify provided a seamless verification experience, significantly reducing the turnaround time for credential validation and is a good project worthy of first prize.`,
+        name: 'Sunil Subramanyam Yadavalli, Voruganti Aravind',
+        job: 'Information Data Systems - IDS',
         image: {
-          src: 'https://images.unsplash.com/photo-1554151228-14d9def656e4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=772&q=80',
-          alt: 'Emily Martinez Image',
-        },
-      },
-      {
-        testimonial: `She has an uncanny ability to communicate emotions and stories. She crafted a logo for our NGO that not only represents our cause but also evokes empathy. Her professionalism and commitment make her a designer of exceptional caliber.`,
-        name: 'Laura Simmons',
-        job: 'Founder of an NGO',
-        image: {
-          src: 'https://images.unsplash.com/photo-1554727242-741c14fa561c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
-          alt: 'Laura Simmons Image',
-        },
-      },
-      {
-        testimonial: `We entrusted Sarah with revamping our website's user interface, and the results were astounding. Her intuitive design sense enhanced user experience, leading to a significant increase in engagement. She's a designer who truly understands the synergy of aesthetics and functionality.`,
-        name: 'Alex Foster',
-        job: 'Director of web services',
-        image: {
-          src: 'https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
-          alt: 'Alex Foster Image',
-        },
-      },
-      {
-        testimonial: `She took our vision and elevated it beyond imagination. Her ability to capture brand essence and translate it into design is nothing short of remarkable. Working with her has been an inspiring journey.`,
-        name: 'Jessica Collins',
-        job: 'Product Manager',
-        image: {
-          src: 'https://images.unsplash.com/photo-1548142813-c348350df52b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=778&q=80',
-          alt: 'Jessica Collins Image',
-        },
-      },
-      {
-        testimonial: `Her ability to transform concepts into captivating visuals is nothing short of extraordinary. She took our event poster idea and turned it into a visual masterpiece that perfectly captured the essence of our festival. Sarah's dedication, creativity, and knack for delivering beyond expectations make her an invaluable asset to any project.`,
-        name: 'Michael Carter',
-        job: 'Event Coordinator',
-        image: {
-          src: 'https://images.unsplash.com/photo-1566492031773-4f4e44671857?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
-          alt: 'Michael Carter Image',
+          src: 'https://images.unsplash.com/photo-1511367461989-f85a21fda167?q=80&w=3431&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+          alt: 'Person Image',
         },
       },
     ]}
@@ -363,13 +303,13 @@ const metadata = {
   <!-- CallToAction Widget *********** -->
 
   <CallToAction
-    title="Let's create together"
-    subtitle="Ready to transform your vision into captivating designs?"
+    title="Discuss Collaboration"
+    subtitle="Interested in technical deep-dives or research partnerships?"
     actions={[
       {
         variant: 'primary',
-        text: 'Hire me',
-        href: '/',
+        text: 'Contact Me',
+        href: '/about#contact',
       },
     ]}
   />
